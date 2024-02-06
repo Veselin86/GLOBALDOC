@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->unsignedInteger('nia')->unique();
+            $table->unsignedInteger('nia')->primary(); //$table->unsignedInteger('nia', 8)->primary(); ERROR AL CREAR LA TABLA MULTIPLPES PK
             $table->string('name');
             $table->string('email')->unique();
             // $table->string('profile_picture');

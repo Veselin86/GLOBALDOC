@@ -16,7 +16,7 @@ return new class extends Migration
             $table->unsignedInteger('user_id')->index();
             $table->foreign('description_id')->references('id')->on('descriptions')->onDelete('cascade');
             $table->foreign('user_id')->references('nia')->on('users')->onDelete('cascade');
-            $table->integer('rating')->unique();
+            $table->integer('rating');
             
             // $table->integer('rating'); DEBERIA DE SER SIN UNIQUE() porque si es con unique()
             // solo se podría tener una calificación para una descripción a través de todos los usuarios

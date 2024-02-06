@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('types', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique();
+            $table->string('name'); //NO puede ser UNIQUE() porque se repiten los nombres de usuario o asignatura
             $table->string('model')->nullable();
             $table->timestamps();
         });
