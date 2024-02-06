@@ -14,7 +14,7 @@ return new class extends Migration
     {
         Schema::create('term_user', function (Blueprint $table) {
             $table->unsignedBigInteger('term_id')->index();
-            $table->unsignedBigInteger('user_id')->index();
+            $table->unsignedInteger('user_id')->index();
             $table->foreign('term_id')->references('id')->on('terms')->onDelete('cascade');
             $table->foreign('user_id')->references('nia')->on('users')->onDelete('cascade');
             $table->primary(['term_id', 'user_id']);
