@@ -12,34 +12,29 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-    ];
+    //Relacion 1:M con type
+    public function types() {
+        return $this->belongsTo(Type::class);
+    }
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
+    //Relacion N:M con term
+    public function terms() {
+        return $this->belongsToMany(User::class, 'term_user', 'term_id', 'user_id', 'id', 'nia');
+    }
 
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-        'password' => 'hashed',
-    ];
+    public function rates() {
+        return $this->belongsToMany(User::class, 'description_user', 'description_id', 'user_id', 'id', 'nia')
+            ->withPivot('rate', 'rate_date')
+            ->withTimestamps();
+    }
+
+    // public function terms() {
+    //     return $this->belongsToMany(Term::class, 'term_user');
+    // }
+    
+    // public function rates() {
+    //     return $this->belongsToMany(Description::class, 'description_user')
+    //         ->withPivot('rate', 'rate_date')
+    //         ->withTimestamps();
+    // }
 }

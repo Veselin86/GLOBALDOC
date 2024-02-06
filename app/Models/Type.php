@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Type extends Model
 {
     use HasFactory;
+
+    public function terms() {
+        return $this->hasMany(Term::class);
+    }
+
+    public function users() {
+        return $this->hasMany(USer::class);
+    }
 }
