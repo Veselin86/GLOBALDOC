@@ -13,6 +13,14 @@ return new class extends Migration
     {
         Schema::create('descriptions', function (Blueprint $table) {
             $table->id();
+            $table->text('notes');
+            $table->text('synthesis');
+            $table->unsignedBigInteger('terms_id');
+            $table->foreign('terms_id')->references('id')->on('terms')->onDelete('cascade')->onUpdate('cascade');
+
+            // $table->unsignedBigInteger('term_id'); // Cambiado a singular para seguir la convención
+            // $table->foreign('term_id')->references('id')->on('terms')->onDelete('cascade')->onUpdate('cascade');
+
             $table->timestamps();
         });
     }

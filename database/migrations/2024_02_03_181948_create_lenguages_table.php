@@ -12,7 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('lenguages', function (Blueprint $table) {
-            $table->id();
+            $table->char('iso_code', 2)->primary();
+            $table->string('lenguage')->unique();
             $table->timestamps();
         });
     }
