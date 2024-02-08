@@ -14,9 +14,12 @@ return new class extends Migration
         Schema::create('terms', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
+            $table->unsignedBigInteger('type_id');
             $table->string('definition');
-            $table->integer('usage_count');
+            // $table->integer('usage_count');
             $table->timestamps();
+
+            $table->foreign('type_id')->references('id')->on('types')->onDelete('cascade');
         });
     }
 

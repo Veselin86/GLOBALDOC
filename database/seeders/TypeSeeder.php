@@ -11,24 +11,13 @@ class TypeSeeder extends Seeder
     /**
      * Run the database seeds.
      */
-    public function run(): void
+    public function run()
     {
-        $types = [
-            ['name' => 'DWES', 'model' => 'Término'],
-            ['name' => 'DWEC', 'model' => 'Término'],
-            // Añade tantos tipos de términos como necesites
-            ['name' => 'Profesor', 'model' => 'Usuario'],
-            ['name' => 'Alumno', 'model' => 'Usuario'],
-            // Añade otros roles de usuario si es necesario
-        ];
-
-        foreach ($types as $type) {
-            DB::table('types')->insert([
-                'name' => $type['name'],
-                'model' => $type['model'],
-                'created_at' => now(),
-                'updated_at' => now(),
-            ]);
-        }
+        DB::table('types')->insert([
+            ['model' => 'User', 'name' => 'Teacher'],
+            ['model' => 'User', 'name' => 'Student'],
+            ['model' => 'Term', 'name' => 'Subject'],
+            ['model' => 'Term', 'name' => 'Topic'],
+        ]);
     }
 }

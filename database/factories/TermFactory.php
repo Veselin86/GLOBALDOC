@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\Type;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Term>
@@ -18,8 +19,9 @@ class TermFactory extends Factory
     {
         return [
             'name' => $this->faker->word,
+            'type_id' => Type::where('model', 'Term')->whereIn('name', ['Subject', 'Topic'])->inRandomOrder()->first()->id,
             'definition' => $this->faker->sentence, 
-            'usage_count' => $this->faker->numberBetween(0, 100),
+            // 'usage_count' => $this->faker->numberBetween(0, 100),
         ];
     }
 }

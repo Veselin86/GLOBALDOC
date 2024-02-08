@@ -5,6 +5,7 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use App\Models\Type;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
@@ -26,6 +27,7 @@ class UserFactory extends Factory
         return [
             'nia' => $this->faker->unique()->numerify('########'),
             'name' => $this->faker->name(),
+            'type_id' => Type::where('model', 'User')->whereIn('name', ['Teacher', 'Student'])->inRandomOrder()->first()->id,
             'email' => $this->faker->unique()->safeEmail(),
             'email_verified_at' => now(),
             'password' => static::$password ??= Hash::make('password'),

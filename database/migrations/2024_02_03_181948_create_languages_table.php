@@ -11,10 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('types', function (Blueprint $table) {
-            $table->id();
-            $table->string('name'); //NO puede ser UNIQUE() porque se repiten los nombres de usuario o asignatura
-            $table->string('model')->nullable();
+        Schema::create('languages', function (Blueprint $table) {
+            $table->char('iso_code', 2)->primary();
+            $table->string('language')->unique();
             $table->timestamps();
         });
     }
@@ -24,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('types');
+        Schema::dropIfExists('languages');
     }
 };

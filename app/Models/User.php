@@ -13,10 +13,13 @@ class User extends Authenticatable
     use HasApiTokens, HasFactory, Notifiable;
 
     //Relacion 1:M con type
-    public function types() {
-        return $this->belongsTo(Type::class);
+    // public function type() {
+    //     return $this->belongsTo(Type::class );
+    // }
+    public function type() {
+        return $this->belongsTo(Type::class, 'type_id');
     }
-
+    
     //Relacion N:M con term
     public function terms() {
         return $this->belongsToMany(User::class, 'term_user', 'term_id', 'user_id', 'id', 'nia');

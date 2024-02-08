@@ -14,6 +14,13 @@ class Type extends Model
     }
 
     public function users() {
-        return $this->hasMany(USer::class);
+         return $this->hasMany(USer::class);
     }
+    // public function users() {
+    //     return $this->hasMany(User::class, 'type_id');
+    // }
+
+    // public function terms() {
+    //     return $this->hasMany(Term::class, 'type_id');
+    // }
 }

@@ -10,9 +10,12 @@ class Term extends Model
     use HasFactory;
 
     //Relacion 1:M con type
-    public function types()
-    {
-        return $this->belongsTo(Type::class);
+    // public function type()
+    // {
+    //     return $this->belongsTo(Type::class);
+    // }
+    public function type() {
+        return $this->belongsTo(Type::class, 'type_id');
     }
     
     //Relacion 1:N con descripocion:
@@ -33,6 +36,6 @@ class Term extends Model
 
     public function language()
     {
-        return $this->belongsTo(Lenguage::class);
+        return $this->belongsTo(Language::class);
     }
 }
