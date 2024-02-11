@@ -16,7 +16,7 @@ class Description extends Model
     //Relacion 1:1 con Term
     public function terms()
     {
-        return $this->belongsTo(Term::class);
+        return $this->belongsTo(Term::class, 'terms_id');
     }
 
     //Realicion N:M con User

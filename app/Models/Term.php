@@ -9,13 +9,11 @@ class Term extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['name', 'type_id', 'definition'];
+
     //Relacion 1:M con type
-    // public function type()
-    // {
-    //     return $this->belongsTo(Type::class);
-    // }
     public function type() {
-        return $this->belongsTo(Type::class, 'type_id');
+        return $this->belongsTo(Type::class);
     }
     
     //Relacion 1:N con descripocion:
@@ -29,10 +27,6 @@ class Term extends Model
     {
         return $this->belongsToMany(User::class, 'term_user', 'term_id', 'user_id', 'id', 'nia');
     }
-
-    // public function users() {
-    //     return $this->belongsToMany(User::class, 'term_user');
-    // }
 
     public function language()
     {

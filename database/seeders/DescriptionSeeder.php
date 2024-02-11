@@ -27,7 +27,7 @@ class DescriptionSeeder extends Seeder
             Description::create([
                 'notes' => 'Notas de ejemplo para el término ' . $term->name,
                 'synthesis' => 'Síntesis de ejemplo para el término ' . $term->name,
-                'terms_id' => $term->id,
+                'term_id' => $term->id,
             ]);
         }
     }

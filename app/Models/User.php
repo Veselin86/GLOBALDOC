@@ -12,10 +12,10 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    protected $primaryKey = 'nia';
+    protected $fillable = ['nia', 'name', 'type_id', 'email', 'password'];
+
     //Relacion 1:M con type
-    // public function type() {
-    //     return $this->belongsTo(Type::class );
-    // }
     public function type() {
         return $this->belongsTo(Type::class, 'type_id');
     }
@@ -30,14 +30,4 @@ class User extends Authenticatable
             ->withPivot('rate', 'rate_date')
             ->withTimestamps();
     }
-
-    // public function terms() {
-    //     return $this->belongsToMany(Term::class, 'term_user');
-    // }
-    
-    // public function rates() {
-    //     return $this->belongsToMany(Description::class, 'description_user')
-    //         ->withPivot('rate', 'rate_date')
-    //         ->withTimestamps();
-    // }
 }

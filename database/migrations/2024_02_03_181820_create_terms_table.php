@@ -19,7 +19,7 @@ return new class extends Migration
             // $table->integer('usage_count');
             $table->timestamps();
 
-            $table->foreign('type_id')->references('id')->on('types')->onDelete('cascade');
+            $table->foreign('type_id')->references('id')->on('types');
         });
     }
 

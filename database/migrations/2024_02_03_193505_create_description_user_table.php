@@ -17,14 +17,9 @@ return new class extends Migration
             $table->foreign('description_id')->references('id')->on('descriptions')->onDelete('cascade');
             $table->foreign('user_id')->references('nia')->on('users')->onDelete('cascade');
             $table->integer('rating');
-            
-            // $table->integer('rating'); DEBERIA DE SER SIN UNIQUE() porque si es con unique()
-            // solo se podría tener una calificación para una descripción a través de todos los usuarios
-
             $table->date('rating_date');
             $table->timestamps();
             $table->primary(['description_id', 'user_id']);
-
         });
     }
 
