@@ -9,6 +9,8 @@ use App\Models\Type;
 class TermController extends Controller
 {
 
+
+
     public function index($filter = null)
     {
         $query = Term::with('users');
@@ -43,6 +45,8 @@ class TermController extends Controller
     // }
     public function show($id)
     {
+        session(['last_term_id' => $id]);
+
         $term = Term::findOrFail($id);
         $description = $term->description;
         return view('terms.show', compact('term'));
@@ -51,7 +55,7 @@ class TermController extends Controller
 
     public function edit($id)
     {
-        $term = Term::findOrFail($id);
+        $term = Term::find($id);
         $types = Type::where('model', 'Term')->get();
 
         return view('terms.edit', compact('term', 'types'));

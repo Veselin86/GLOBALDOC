@@ -10,7 +10,9 @@ class Description extends Model
     use HasFactory;
 
     protected $fillable = [
-        // Lista de campos asignables en masa
+        'notes',
+        'synthesis',
+        'term_id',
     ];
 
     //Relacion 1:1 con Term
@@ -27,11 +29,9 @@ class Description extends Model
             ->withTimestamps();
     }
 
-    //Realacion N:M con Idea
     public function ideas()
     {
-        return $this->belongsToMany(Idea::class, 'description_idea', 'description_id', 'idea_id', 'id', 'id')
-            ->withTimestamps();
+        return $this->hasMany(Idea::class);
     }
 
     public function language()

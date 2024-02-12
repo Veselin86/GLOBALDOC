@@ -22,12 +22,11 @@ class DescriptionUserSeeder extends Seeder
             $userRatings = [];
             foreach ($users->random(rand(1, 3)) as $user) {
                 $userRatings[$user->nia] = [
-                    'rating' => rand(1, 5), // Genera un rating aleatorio entre 1 y 5
-                    'rating_date' => Carbon::now() // Usa la fecha actual
+                    'rating' => rand(1, 5),
+                    'rating_date' => Carbon::now()
                 ];
             }
-             // Asocia los usuarios con la descripción, incluyendo los ratings y las fechas de rating
-             $description->users()->syncWithoutDetaching($userRatings);
+            $description->users()->syncWithoutDetaching($userRatings);
         }
     }
 }

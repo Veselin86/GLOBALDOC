@@ -11,14 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('description_idea', function (Blueprint $table) {
-            $table->unsignedBigInteger('description_id')->index();
-            $table->unsignedBigInteger('idea_id')->index();
-            $table->foreign('description_id')->references('id')->on('descriptions')->onDelete('cascade');
-            $table->foreign('idea_id')->references('id')->on('ideas')->onDelete('cascade');
-            $table->timestamps();
-            $table->primary(['description_id', 'idea_id']);
-        });
+        // Schema::create('description_idea', function (Blueprint $table) {
+        //     $table->unsignedBigInteger('description_id')->index();
+        //     $table->unsignedBigInteger('idea_id')->index();
+        //     $table->foreign('description_id')->references('id')->on('descriptions')->onDelete('cascade');
+        //     $table->foreign('idea_id')->references('id')->on('ideas')->onDelete('cascade');
+        //     $table->timestamps();
+        //     $table->primary(['description_id', 'idea_id']);
+        // });
     }
 
     /**

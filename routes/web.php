@@ -6,8 +6,8 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\TermController;
 use App\Http\Controllers\TypeController;
 use App\Http\Controllers\IdeaController;
+use App\Http\Controllers\DescriptionController;
 use Illuminate\Support\Facades\Auth;
-
 
 /*
 |--------------------------------------------------------------------------
@@ -34,8 +34,20 @@ Route::get('/terms/filter/{filter?}', [TermController::class, 'index'])->name('t
 Route::resource('/types', TypeController::class)->names('types');
 Route::get('/types/filter/{filter?}', [TypeController::class, 'index'])->name('types.filter');
 
-Route::delete('/ideas/{idea}', [IdeaController::class, 'destroy'])->name('ideas.destroy');
-Route::put('/ideas/{idea}', [IdeaController::class, 'update'])->name('ideas.update');
+Route::resource('ideas', IdeaController::class)->names('ideas');
+
+Route::resource('descriptions', DescriptionController::class)->names('descriptions');
+Route::get('descriptions/create/{termId?}', [DescriptionController::class, 'create'])->name('descriptions.create');
+
+
+// Route::delete('/ideas/{idea}', [IdeaController::class, 'destroy'])->name('ideas.destroy');
+// Route::put('/ideas/{idea}', [IdeaController::class, 'update'])->name('ideas.update');
+// Route::get('/ideas/{id}/edit', [IdeaController::class, 'edit'])->name('ideas.edit');
+
+// Route::delete('/terms/{terms}/ideas/{idea}', [IdeaController::class, 'destroy'])->name('ideas.destroy');
+// Route::put('/terms/{terms}/ideas/{idea}', [IdeaController::class, 'update'])->name('ideas.update');
+
+
 
 // Route::get('/users', [UserController::class, 'index'])->name('users.index');
 // Route::get('/terms', [TermController::class, 'index'])->name('terms.index');

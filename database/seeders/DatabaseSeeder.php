@@ -13,17 +13,18 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(TypeSeeder::class);
         
-        \App\Models\User::factory(5)->create();
-        \App\Models\Term::factory(5)->create();
-        \App\Models\Idea::factory(5)->create();
+        \App\Models\User::factory(10)->create();
+        \App\Models\Term::factory(10)->create();
 
         $this->call([
             DescriptionSeeder::class,
             LanguageSeeder::class,
-            DescriptionIdeaSeeder::class,
             DescriptionUserSeeder::class,
             TermUserSeeder::class,
         ]);
+
+        \App\Models\Idea::factory(20)->create();
+
 
     }
 }

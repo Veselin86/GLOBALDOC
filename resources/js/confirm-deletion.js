@@ -38,9 +38,16 @@ function confirmDeletion(id, url, primaryKey = "id") {
 }
 
 function deleteIdea(ideaId) {
+    console.log(`deleteIdea called with id ${ideaId}`);
+
     Swal.fire({
-        // Configuración de SweetAlert
-    }).then((result) => {
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!",    }).then((result) => {
         if (result.isConfirmed) {
             // Envía la solicitud DELETE usando AJAX
             fetch(`/ideas/${ideaId}`, {
@@ -52,31 +59,88 @@ function deleteIdea(ideaId) {
                     "Content-Type": "application/json",
                 },
             })
-                .then((response) => response.json())
-                .then((data) => {
-                    if (data.success) {
-                        // Elimina el elemento de la lista o actualiza la vista de alguna manera
-                        document.getElementById(`idea-${ideaId}`).remove();
-                    }
-                });
+            .then((response) => response.json())
+            .then((data) => {
+                if (data.success) {
+                    // Elimina el elemento de la lista o actualiza la vista de alguna manera
+                    document.getElementById(`idea-${ideaId}`).remove();
+                }
+            });
         }
     });
 }
 
-function editIdea(ideaId) {
-    const ideaElement = document.getElementById(`idea-${ideaId}`);
-    const ideaTitle = ideaElement.querySelector(".idea-title").textContent;
-    const input = document.createElement("input");
-    input.type = "text";
-    input.value = ideaTitle;
-    input.className = "idea-edit-input";
-    // Reemplaza el título con un campo de entrada
-    ideaElement.querySelector(".idea-title").replaceWith(input);
-    // Aquí podrías añadir un botón de guardar o manejar el guardado en el evento de "change" o "blur" del input
-}
 
-// Añadir más funciones según sea necesario para manejar la creación de nuevas ideas.
+// function editIdea(ideaId) {
+//     const ideaElement = document.getElementById(`idea-${ideaId}`);
+//     const ideaTitle = ideaElement.querySelector(".idea-title").textContent;
+//     const input = document.createElement("input");
+//     input.type = "text";
+//     input.value = ideaTitle;
+//     input.className = "idea-edit-input";
+//     // Reemplaza el título con un campo de entrada
+//     ideaElement.querySelector(".idea-title").replaceWith(input);
 
+//     // Añade un evento de "blur" al input para guardar los cambios cuando el usuario haga clic fuera del input
+//     input.addEventListener("blur", function() {
+//         const newIdeaTitle = this.value;
+
+//         // Aquí es donde usarías AJAX para enviar los cambios al servidor
+//         fetch(`/ruta/a/tu/endpoint/api/${ideaId}`, {
+//             method: "POST",
+//             headers: {
+//                 "Content-Type": "application/json",
+//             },
+//             body: JSON.stringify({
+//                 title: newIdeaTitle,
+//             }),
+//         })
+//         .then(response => response.json())
+//         .then(data => {
+//             // Aquí puedes manejar la respuesta del servidor
+//             console.log(data);
+//         })
+//         .catch(error => {
+//             // Aquí puedes manejar cualquier error que ocurra durante la solicitud AJAX
+//             console.error('Error:', error);
+//         });
+//     });
+// }
+// function editIdea(ideaId) {
+//     const ideaElement = document.getElementById(`idea-${ideaId}`);
+//     const ideaTitle = ideaElement.textContent;
+//     const input = document.createElement("input");
+//     input.type = "text";
+//     input.value = ideaTitle;
+//     input.className = "idea-edit-input";
+
+//     // Crea los botones de "Guardar" y "Cancelar"
+//     const saveButton = document.createElement("button");
+//     saveButton.textContent = "Guardar";
+//     const cancelButton = document.createElement("button");
+//     cancelButton.textContent = "Cancelar";
+
+//     // Reemplaza el título con un campo de entrada y los botones
+//     ideaElement.textContent = '';
+//     ideaElement.appendChild(input);
+//     ideaElement.appendChild(saveButton);
+//     ideaElement.appendChild(cancelButton);
+
+//     // Cuando el usuario haga clic en "Guardar", guarda los cambios localmente
+//     saveButton.addEventListener("click", function() {
+//         const newIdeaTitle = input.value;
+
+//         // Reemplaza el campo de entrada y los botones con el nuevo título
+//         ideaElement.textContent = newIdeaTitle;
+//     });
+
+//     // Cuando el usuario haga clic en "Cancelar", revierte los cambios
+//     cancelButton.addEventListener("click", function() {
+//         ideaElement.textContent = ideaTitle;
+//     });
+// }
+
+
+// window.editIdea = editIdea
 window.confirmDeletion = confirmDeletion;
-window.editIdea = editIdea;
 window.deleteIdea = deleteIdea;
