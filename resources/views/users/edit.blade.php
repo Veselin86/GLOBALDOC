@@ -10,17 +10,21 @@
             {{ isset($user) ? 'Edit User' : 'Create User' }}
         </h3>
 
-        @if ($errors->any())
+        @if ($errors->any() || session('error'))
             <div class="mb-4 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
                 <strong class="font-bold">Whoops!</strong>
-                <span class="block sm:inline">There were some problems with your input.</span>
-                <ul class="list-disc list-inside">
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
+                @if ($errors->any())
+                    <span class="block sm:inline">There were some problems with your input.</span>
+                    <ul class="list-disc list-inside">
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                @else
+                    <span class="block sm:inline">{{ session('error') }}</span>
+                @endif
             </div>
-         @endif
+        @endif
 
         <form action="{{ isset($user) ? route('users.update', $user->nia) : route('users.store') }}" method="POST">
             @csrf
