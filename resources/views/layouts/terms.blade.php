@@ -3,7 +3,7 @@
 
 @section('content')
     <div class="container mx-auto px-4">
-        <h3 class="text-2xl text-blue-600 text-center font-semibold leading-tight py-3">Terms</h3>
+        <h3 class="text-2xl text-blue-600 text-center font-semibold leading-tight py-3">{{ __('Terms') }}</h3>
         <button
             class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             type="button" onclick="window.location='{{ route('terms.create') }}'">
@@ -14,10 +14,10 @@
                 <thead>
                     <tr
                         class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-xl font-semibold text-gray-600 uppercase tracking-wider">
-                        <th> Term </th>
-                        <th> Type </th>
-                        <th> User </th>
-                        <th colspan="2"> Actions </th>
+                        <th> {{ __('Term') }} </th>
+                        <th> {{ __('Type') }} </th>
+                        <th> {{ __('User') }} </th>
+                        <th colspan="2"> {{ __('Actions') }} </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -27,19 +27,19 @@
                                 {{ $term->name }}
                             </td>
                             <td>
-                                {{ $term->type->name ?? 'Type not asigned' }}
+                                {{ __($term->type->name) ?? __('Type not asigned') }}
                             </td>
                             <td>
-                                {{ $term->users->first()->name ?? 'User not assigned' }}
+                                {{ $term->users->first()->name ?? __('User not assigned') }}
                             </td>
                             <td>
                                 <a href="{{ route('terms.show', $term->id) }}"
-                                    class="text-indigo-600 hover:text-indigo-900">Show</a>
+                                    class="text-indigo-600 hover:text-indigo-900">{{ __('Show') }}</a>
                             </td>
                             <td>
                                 <button type="button" class="text-red-600 hover:text-red-900"
                                     onclick="confirmDeletion({{ $term->id }}, '{{ route('terms.destroy', ':id') }}')">
-                                    Delete
+                                    {{ __('Delete') }}
                                 </button>
                             </td>
                         </tr>

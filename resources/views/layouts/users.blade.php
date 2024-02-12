@@ -3,7 +3,7 @@
 
     @section('content')
         <div class="container mx-auto px-4">
-            <h3 class="text-2xl text-blue-600 text-center font-semibold leading-tight py-3">Users</h3>
+            <h3 class="text-2xl text-blue-600 text-center font-semibold leading-tight py-3"> {{ __('Users') }} </h3>
             <button
                 class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                 type="button" onclick="window.location='{{ route('users.create') }}'">
@@ -15,9 +15,9 @@
                     <thead>
                         <tr
                             class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-xl font-semibold text-gray-600 uppercase tracking-wider">
-                            <th> User </th>
-                            <th> Type </th>
-                            <th colspan="2"> Actions </th>
+                            <th> {{ __('User') }} </th>
+                            <th> {{ __('Type') }} </th>
+                            <th colspan="2"> {{ __('Actions') }} </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -27,12 +27,12 @@
                                     {{ $user->name }}
                                 </td>
                                 <td>
-                                    {{ $user->type->name ?? 'Tipo no asignado' }}
+                                    {{ __($user->type->name) ?? __('Unassigned type') }}
                                 </td>
                                 <td>
                                     {{-- <a href="{{ route('users.show', ['nia' => $user->nia]) }}"      --}}
                                     <a href="{{ route('users.show', ['user' => $user]) }}"
-                                        class="text-indigo-600 hover:text-indigo-900">Show</a>
+                                        class="text-indigo-600 hover:text-indigo-900"> {{ __('Show') }} </a>
                                 </td>
                                 <td>
                                     <form action="{{ route('users.destroy', $user->nia) }}" method="POST">
@@ -40,7 +40,7 @@
                                         @method('DELETE')
                                         <button type="button" class="text-red-600 hover:text-red-900"
                                             onclick="confirmDeletion('{{ $user->nia }}', '{{ route('users.destroy', ':nia') }}', 'nia')">
-                                            Delete
+                                            {{ __('Delete') }}
                                         </button>
                                     </form>
                                 </td>

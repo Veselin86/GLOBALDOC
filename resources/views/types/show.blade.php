@@ -8,35 +8,35 @@
                     <tr
                         class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-lg font-semibold text-gray-600 uppercase tracking-wider">
                         <th colspan="2"> 
-                            Type details 
+                            {{ __('Type details') }} 
                         </th>
                         <th>
                             <a href="{{ route('types.edit', $type->id) }}"
                                 class="text-white bg-blue-500 hover:bg-blue-700 font-bold  px-4 rounded">
-                                Edit
+                                {{ __('Edit') }}
                             </a>
                         </th>
                     </tr>
                 </thead>
                 <tbody class="px-5 py-2 border-b border-gray-200 bg-white text-right text-lg">
                     <tr>
-                        <td><strong>ID:</strong></td>
+                        <td><strong>{{ __('ID') }}:</strong></td>
                         <td class="text-left pl-2"> {{ $type->id }} </td>
                     </tr>
                     <tr>
-                        <td><strong>Model:</strong></td>
-                        <td class="text-left italic pl-2"> {{ $type->model }} </td>
+                        <td><strong>{{ __('Model') }}:</strong></td>
+                        <td class="text-left italic pl-2"> {{ __($type->model) }} </td>
                     </tr>                    
                     <tr>
-                        <td><strong>Name:</strong></td>
-                        <td class="text-left italic pl-2"> {{ $type->name }} </td>
+                        <td><strong>{{ __('Name') }}:</strong></td>
+                        <td class="text-left italic pl-2"> {{ __($type->name) }} </td>
                     </tr>                                     
                     <tr>
-                        <td><strong>Created at:</strong></td>
+                        <td><strong>{{ __('Created at') }}:</strong></td>
                         <td class="text-left pl-2">  {{ $type->created_at->format('d/m/Y H:i') }} </td>
                     </tr>                    
                     <tr >
-                        <td><strong>Updated at:</strong></td>
+                        <td><strong>{{ __('Updated at') }}:</strong></td>
                         <td class="text-left pl-2"> {{ $type->updated_at->format('d/m/Y H:i') }} </td>
                     </tr>
                 </tbody>

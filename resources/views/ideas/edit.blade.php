@@ -3,17 +3,17 @@
 @section('content')
     <div class="container mx-auto px-4">
         <h3 class="text-2xl text-blue-600 text-center font-semibold leading-tight py-3">
-            {{ isset($idea) ? 'Edit idea' : 'Create idea' }}
+            {{ isset($idea) ? __('Edit Idea') : __('Create Idea') }}
         </h3>
 
         @if ($errors->any() || session('error'))
             <div class="mb-4 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
-                <strong class="font-bold">Whoops!</strong>
+                <strong class="font-bold">{{ __('Whoops') }}!</strong>
                 @if ($errors->any())
-                    <span class="block sm:inline">There were some problems with your input.</span>
+                    <span class="block sm:inline">{{ __('There were some problems with your input') }}.</span>
                     <ul class="list-disc list-inside">
                         @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
+                            <li>{{ __($error) }}</li>
                         @endforeach
                     </ul>
                 @else
@@ -30,14 +30,14 @@
                 @method('PUT')
             @endif
             <div class="mb-4">
-                <label for="title">Title:</label>
+                <label for="title">{{ __("Idea's Title")}}:</label>
                 <input type="text" id="title" name="title" value="{{ $idea->title ?? '' }}"
                     class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" required>
             </div>
 
             <div class="flex items-center justify-between">
                 <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                    {{ isset($idea) ? 'Save' : 'Create' }}
+                    {{ isset($idea) ? __('Save') : __('Create') }}
                 </button>
             </div>
         </form>

@@ -32,6 +32,13 @@
             </div>
         </div>
     </div>
+    <script>
+        window.translations = {
+            'Are you sure?': '{{ __("Are you sure?") }}',
+            'You won`t be able to revert this!': '{{ __("You won`t be able to revert this!") }}',
+            'Yes, delete it!': '{{ __("Yes, delete it!") }}'
+        };
+    </script>
     <script src="//unpkg.com/alpinejs" defer></script>
     <script>
         document.addEventListener('alpine:init', () => {
