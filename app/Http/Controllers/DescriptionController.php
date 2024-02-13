@@ -21,12 +21,6 @@ class DescriptionController extends Controller
      * @param  int  $termId
      * @return \Illuminate\Http\Response
      */
-    // public function create(Request $request)
-    // {
-    //     $termId = $request->query('termId');
-    //     session(['last_term_id' => $termId]);
-    //     return view('descriptions.edit', compact('termId'));
-    // }
     public function create(Request $request)
     {
         $termId = $request->query('termId'); // Obtiene el termId de la URL o de alguna otra fuente

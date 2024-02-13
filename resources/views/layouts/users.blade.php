@@ -27,9 +27,9 @@
                                     {{ $user->name }}
                                 </td>
                                 <td>
-                                    {{ $user->type ? __($user->type->name) : __('Unassigned type') }}                                </td>
+                                    {{ $user->type ? __($user->type->name) : __('Unassigned type') }}
+                                </td>
                                 <td>
-                                    {{-- <a href="{{ route('users.show', ['nia' => $user->nia]) }}"      --}}
                                     <a href="{{ route('users.show', ['user' => $user]) }}"
                                         class="text-indigo-600 hover:text-indigo-900"> {{ __('Show') }} </a>
                                 </td>

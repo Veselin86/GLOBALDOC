@@ -15,15 +15,14 @@ use App\Http\Controllers\Api\UserController;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
-
+Route::delete('delete/{user}', [\App\Http\Controllers\Api\UserController::class, 'destroy']);
+Route::post('login', [\App\Http\Controllers\Api\UserController::class, 'login']);
 
 Route::middleware('auth:api')->group(function () {
-    Route::post('login', [\App\Http\Controllers\Api\UserController::class, 'login'])->middleware('auth:api');
     Route::post('logout', [\App\Http\Controllers\Api\UserController::class, 'logout']);
     Route::get('users', [\App\Http\Controllers\Api\UserController::class, 'index']);
     Route::get('user/{user}', [\App\Http\Controllers\Api\UserController::class, 'show']);
     Route::post('create', [\App\Http\Controllers\Api\UserController::class, 'store']);
-    Route::delete('delete/{user}', [\App\Http\Controllers\Api\UserController::class, 'destroy'])->middleware('auth:api');
 });
 
 Route::middleware('api')->group(function () {

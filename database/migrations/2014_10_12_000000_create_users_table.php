@@ -12,10 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->unsignedInteger('nia')->primary(); //$table->unsignedInteger('nia', 8)->primary(); ERROR AL CREAR LA TABLA MULTIPLPES PK
+            $table->unsignedInteger('nia')->primary();
             $table->string('name');
             $table->unsignedBigInteger('type_id')->nullable();
-            // $table->enum('type', ['Student', 'Teacher']);
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');

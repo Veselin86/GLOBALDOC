@@ -52,36 +52,3 @@
 </body>
 
 </html>
-
-
-{{-- <body class="font-sans antialiased">
-    <div id="app" class="min-h-screen bg-gray-100">
-        <!-- Header -->
-        @include('layouts.header')
-        
-        <!-- Container for aside and content -->
-        <div class="flex">
-            
-            <!-- Aside -->
-            <aside class="w-1/4 bg-white shadow">
-                @include('layouts.aside')
-            </aside>
-
-            <!-- Content -->
-            <main class="w-3/4 p-4">
-                @yield('content')
-            </main>
-
-        </div>
-    </div>
-
-    <script src="//unpkg.com/alpinejs" defer></script>
-    <script>
-        document.addEventListener('alpine:init', () => {
-            Alpine.store('dropdown', {
-                open: false
-            });
-        });
-    </script>
-    @vite('resources/css/app.js')
-</body> --}}

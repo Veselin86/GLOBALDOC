@@ -21,7 +21,6 @@ class TermFactory extends Factory
             'name' => $this->faker->word,
             'type_id' => Type::where('model', 'Term')->whereIn('name', ['Subject', 'Topic'])->inRandomOrder()->first()->id,
             'definition' => $this->faker->sentence, 
-            // 'usage_count' => $this->faker->numberBetween(0, 100),
         ];
     }
 }

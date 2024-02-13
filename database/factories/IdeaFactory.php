@@ -20,7 +20,6 @@ class IdeaFactory extends Factory
         return [
             'title' => $this->faker->sentence(),
             'description_id' => function () {
-                // Asegúrate de que la descripción exista en tu base de datos
                 return Description::all()->random();
             },
         ];

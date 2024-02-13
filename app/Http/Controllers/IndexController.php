@@ -12,7 +12,6 @@ class IndexController extends Controller
     {
         $languages = Language::all();
         
-        // return view('index', ['languages' => $languages]);
         return view('index', compact('languages'));
     }
 }

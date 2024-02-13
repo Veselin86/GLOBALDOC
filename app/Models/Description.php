@@ -15,13 +15,11 @@ class Description extends Model
         'term_id',
     ];
 
-    //Relacion 1:1 con Term
     public function terms()
     {
         return $this->belongsTo(Term::class, 'terms_id');
     }
 
-    //Realicion N:M con User
     public function users()
     {
         return $this->belongsToMany(User::class, 'description_user', 'description_id', 'user_id', 'id', 'nia')

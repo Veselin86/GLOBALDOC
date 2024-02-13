@@ -28,7 +28,7 @@
                     </tr>
                     <tr>
                         <td><strong>{{ __('Type') }}:</strong></td>
-                        <td class="text-left pl-2 italic"> {{ __($user->type) ? __($user->type->name) : __('Unassigned type') }} </td>
+                        <td class="text-left pl-2 italic"> {{ $user->type ? __($user->type->name) : __('Unassigned type') }} </td>
                         </td>
                     </tr>
                     <tr>

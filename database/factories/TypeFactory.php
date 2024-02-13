@@ -18,7 +18,6 @@ class TypeFactory extends Factory
      */
     public function definition(): array
     {
-        // $model = $this->faker->randomElement(['Term', 'User']);
         if ($this->faker->boolean) {
             $name = $this->faker->randomElement(['DWES', 'DWEC', 'DIW']);
             $model = 'Término';

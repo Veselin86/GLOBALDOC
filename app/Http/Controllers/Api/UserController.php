@@ -66,4 +66,16 @@ class UserController extends Controller
         $user = User::where('nia', $nia)->firstOrFail();
         return response()->json($user);
     }
+
+    public function destroy($nia) {
+        $user = User::where('nia', $nia)->firstOrFail();
+
+        if ($user) {
+            $user->delete();
+            return response()->json('User deleted con exito', 204);
+        } else {
+            return response()->json(['error' => 'User not found'], 404);
+        }
+    }
 }
+

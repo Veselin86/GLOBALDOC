@@ -16,8 +16,6 @@ class DescriptionSeeder extends Seeder
     public function run(): void
     {
         if (Term::count() == 0) {
-            // Opcional: puedes llamar aquí a un seeder de Term si quieres
-            // $this->call(TermSeeder::class);
             echo "Por favor, crea algunos términos antes de ejecutar este seeder.";
             return;
         }

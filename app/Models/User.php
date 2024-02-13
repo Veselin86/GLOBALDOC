@@ -16,12 +16,10 @@ class User extends Authenticatable implements JWTSubject
     protected $primaryKey = 'nia';
     protected $fillable = ['nia', 'name', 'type_id', 'email', 'password'];
 
-    //Relacion 1:M con type
     public function type() {
         return $this->belongsTo(Type::class, 'type_id');
     }
     
-    //Relacion N:M con term
     public function terms() {
         return $this->belongsToMany(User::class, 'term_user', 'term_id', 'user_id', 'id', 'nia');
     }

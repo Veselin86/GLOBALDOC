@@ -8,11 +8,6 @@ use App\Models\User;
 
 class TypeController extends Controller
 {
-    // public function index()
-    // {
-    //     $types = Type::all();
-    //     return view('layouts.types', compact('types'));
-    // }
     public function index($filter = null)
     {
         if ($filter === 'terms') {
@@ -26,13 +21,6 @@ class TypeController extends Controller
         return view('layouts.types', compact('types'));
     }
     
-    // public function destroy($id)
-    // {
-    //     $type = Type::findOrFail($id);
-    //     $type->delete();
-
-    //     return redirect()->route('types.index')->with('success', 'Term successfully deleted!');
-    // }
     public function destroy($id)
     {
         $type = Type::findOrFail($id);
